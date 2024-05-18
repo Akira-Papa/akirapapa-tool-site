@@ -1,0 +1,118 @@
+/* Global styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Ensure full height layout */
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+/* Basic reset for padding and margin */
+* {
+  box-sizing: border-box;
+}
+
+/* Header styles */
+header {
+  background-color: #1976d2;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Main content styles */
+main {
+  padding: 1rem;
+  flex: 1;
+}
+
+/* Utility classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .flex-column-responsive {
+    flex-direction: column;
+  }
+}
+
+/* Button styles */
+button {
+  background-color: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #145a8d;
+}
+
+/* Input styles */
+input,
+select,
+textarea {
+  padding: 10px;
+  margin: 10px 0;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* QR Code and Color Picker specific styles */
+.qr-code-container,
+.color-picker-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Specific component styles */
+.unix-time-converter,
+.word-counter,
+.password-generator,
+.qr-code-generator,
+.color-picker {
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,9 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/colorpicker/page": "app/colorpicker/page.js",
+  "/page": "app/page.js",
+  "/password/page": "app/password/page.js",
+  "/qrcode/page": "app/qrcode/page.js",
+  "/unixtime/page": "app/unixtime/page.js",
+  "/wordcount/page": "app/wordcount/page.js"
+}
