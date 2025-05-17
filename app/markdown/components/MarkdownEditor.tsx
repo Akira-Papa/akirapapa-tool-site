@@ -11,10 +11,13 @@ const MarkdownEditor = () => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
+                <Typography variant="h6" gutterBottom>
+                    Markdown入力
+                </Typography>
                 <TextField
                     label="Markdown入力"
                     multiline
-                    minRows={15}
+                    minRows={20}
                     fullWidth
                     variant="outlined"
                     value={value}
@@ -29,9 +32,8 @@ const MarkdownEditor = () => {
                     variant="outlined"
                     sx={{
                         p: 2,
-                        minHeight: '300px',
-                        maxHeight: '500px',
-                        overflow: 'auto',
+                        minHeight: '400px',
+                        height: '100%',
                     }}
                     className="markdown-body"
                 >
