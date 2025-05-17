@@ -3,6 +3,10 @@ import React, { useState } from 'react'
 import QRCodeGenerator from './components/QRCodeGenerator'
 import { Typography, TextField, Button, Box } from '@mui/material'
 
+/**
+ * QRコード生成ページ
+ * @returns QRコード生成ページ
+ */
 const QRCodePage = () => {
     const [inputText, setInputText] = useState('')
 

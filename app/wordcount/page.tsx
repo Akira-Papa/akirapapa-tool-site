@@ -3,6 +3,10 @@ import React from 'react'
 import WordCounter from './components/WordCounter'
 import { Typography, Box } from '@mui/material'
 
+/**
+ * 文字数カウントページ
+ * @returns 文字数カウントページ
+ */
 const WordCountPage = () => {
     return (
         <>

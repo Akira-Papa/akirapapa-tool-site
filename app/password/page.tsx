@@ -2,6 +2,10 @@
 import React from 'react'
 import PasswordGenerator from './components/PasswordGenerator'
 
+/**
+ * パスワードジェネレーターページ
+ * @returns パスワードジェネレーターページ
+ */
 const PasswordPage = () => {
     return (
         <>

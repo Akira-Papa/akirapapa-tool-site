@@ -35,6 +35,11 @@ interface ColorPickerState {
     color: Color
 }
 
+/**
+ * カラーピッカー
+ * @param props カラーピッカーの props
+ * @returns カラーピッカー
+ */
 class ColorPicker extends React.Component<ColorPickerProps, ColorPickerState> {
     constructor(props: ColorPickerProps) {
         super(props)

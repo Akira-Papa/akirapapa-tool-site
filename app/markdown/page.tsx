@@ -3,6 +3,10 @@ import React from 'react'
 import { Box, Typography } from '@mui/material'
 import MarkdownEditor from './components/MarkdownEditor'
 
+/**
+ * マークダウンページ
+ * @returns マークダウンページ
+ */
 const MarkdownPage = () => {
     return (
         <Box sx={{ my: 4 }}>
