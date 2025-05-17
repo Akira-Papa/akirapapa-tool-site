@@ -1,1 +1,32 @@
 node_modules
+# ビルド出力ディレクトリを無視
+out/
+.next/
+.turbo/
+.swc
+
+# 環境変数ファイルを無視
+.env
+.env.local
+.env.*.local
+
+# ログファイルを無視
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# テストカバレッジレポートを無視
+coverage/
+
+# IDEやエディタの設定ファイルを無視
+.vscode/
+.idea/
+
+# TypeScriptのビルド出力を無視
+dist/
+
+# その他の一時ファイルを無視
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
