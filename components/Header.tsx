@@ -142,9 +142,9 @@ const Header = () => {
     return (
         <AppBar
             position="static"
-            color="primary"
             elevation={0}
-            style={{
+            sx={{
+                backgroundColor: 'lightskyblue',
                 margin: 0,
             }}
         >
