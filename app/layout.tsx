@@ -8,15 +8,10 @@ import '../styles/globals.css'
 
 const Layout = ({ children }) => {
     const [isRendered, setIsRendered] = useState(false)
-    const [sidebarOpen, setSidebarOpen] = useState(false)
 
     useEffect(() => {
         setIsRendered(true)
     }, [])
-
-    const handleSidebarToggle = () => {
-        setSidebarOpen(!sidebarOpen)
-    }
 
     return (
         <html lang="ja">
@@ -31,12 +26,9 @@ const Layout = ({ children }) => {
             >
                 {isRendered && (
                     <>
-                        <Header onMenuClick={handleSidebarToggle} />
+                        <Header />
                         <Box sx={{ display: 'flex', flex: 1 }}>
-                            <Sidebar
-                                open={sidebarOpen}
-                                onClose={() => setSidebarOpen(false)}
-                            />
+                            <Sidebar />
                             <Box
                                 component="main"
                                 sx={{

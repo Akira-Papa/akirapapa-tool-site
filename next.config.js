@@ -7,6 +7,7 @@ const nextConfig = {
     // Add any other Next.js configurations you might need here
     output: 'export',
     trailingSlash: true,
+    basePath: '',
 }
 
-module.exports = nextConfig
+module.exports = nextConfigS
