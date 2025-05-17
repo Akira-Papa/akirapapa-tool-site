@@ -1,31 +1,9 @@
 'use client'
 import React, { useState } from 'react'
 import { Grid, TextField, Typography, Paper } from '@mui/material'
-
-// 簡易的なMarkdown変換処理
-const escapeHtml = (text: string): string => {
-    return text
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;')
-}
-
-const renderMarkdown = (text: string): string => {
-    let html = escapeHtml(text)
-    html = html.replace(/^###### (.*)$/gm, '<h6>$1</h6>')
-    html = html.replace(/^##### (.*)$/gm, '<h5>$1</h5>')
-    html = html.replace(/^#### (.*)$/gm, '<h4>$1</h4>')
-    html = html.replace(/^### (.*)$/gm, '<h3>$1</h3>')
-    html = html.replace(/^## (.*)$/gm, '<h2>$1</h2>')
-    html = html.replace(/^# (.*)$/gm, '<h1>$1</h1>')
-    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>')
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>')
-    html = html.replace(/\n/g, '<br />')
-    return html
-}
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import 'github-markdown-css/github-markdown.css'
 
 const MarkdownEditor = () => {
     const [value, setValue] = useState<string>('')
@@ -47,8 +25,19 @@ const MarkdownEditor = () => {
                 <Typography variant="h6" gutterBottom>
                     プレビュー
                 </Typography>
-                <Paper variant="outlined" sx={{ p: 2, minHeight: '300px' }}>
-                    <div dangerouslySetInnerHTML={{ __html: renderMarkdown(value) }} />
+                <Paper
+                    variant="outlined"
+                    sx={{
+                        p: 2,
+                        minHeight: '300px',
+                        maxHeight: '500px',
+                        overflow: 'auto',
+                    }}
+                    className="markdown-body"
+                >
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {value}
+                    </ReactMarkdown>
                 </Paper>
             </Grid>
         </Grid>
