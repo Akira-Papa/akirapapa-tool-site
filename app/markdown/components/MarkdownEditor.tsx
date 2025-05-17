@@ -1,12 +1,36 @@
 'use client'
-import React, { useState } from 'react'
-import { Grid, TextField, Typography, Paper } from '@mui/material'
+import React, { useState, useRef } from 'react'
+import {
+    Grid,
+    TextField,
+    Typography,
+    Paper,
+    Button,
+    Snackbar,
+} from '@mui/material'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import 'github-markdown-css/github-markdown.css'
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 
 const MarkdownEditor = () => {
     const [value, setValue] = useState<string>('')
+    const [openSnackbar, setOpenSnackbar] = useState(false)
+    const previewRef = useRef<HTMLDivElement>(null)
+
+    const handleCopy = () => {
+        if (previewRef.current) {
+            const content = previewRef.current.innerHTML
+            navigator.clipboard
+                .writeText(content)
+                .then(() => setOpenSnackbar(true))
+                .catch((err) => console.error('コピーに失敗しました:', err))
+        }
+    }
+
+    const handleCloseSnackbar = () => {
+        setOpenSnackbar(false)
+    }
 
     return (
         <Grid container spacing={2}>
@@ -22,9 +46,21 @@ const MarkdownEditor = () => {
                 />
             </Grid>
             <Grid item xs={12} md={6}>
-                <Typography variant="h6" gutterBottom>
-                    プレビュー
-                </Typography>
+                <Grid container alignItems="center" spacing={1} sx={{ mb: 1 }}>
+                    <Grid item>
+                        <Typography variant="h6">プレビュー</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Button
+                            variant="outlined"
+                            size="small"
+                            startIcon={<ContentCopyIcon />}
+                            onClick={handleCopy}
+                        >
+                            コピー
+                        </Button>
+                    </Grid>
+                </Grid>
                 <Paper
                     variant="outlined"
                     sx={{
@@ -35,11 +71,20 @@ const MarkdownEditor = () => {
                     }}
                     className="markdown-body"
                 >
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                        {value}
-                    </ReactMarkdown>
+                    <div ref={previewRef}>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                            {value}
+                        </ReactMarkdown>
+                    </div>
                 </Paper>
             </Grid>
+            <Snackbar
+                open={openSnackbar}
+                autoHideDuration={3000}
+                onClose={handleCloseSnackbar}
+                message="プレビューをコピーしました"
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            />
         </Grid>
     )
 }
