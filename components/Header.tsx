@@ -11,21 +11,25 @@ import {
     useTheme,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import Sidebar from './Sidebar'
 
-const Header = () => {
-    const [mobileOpen, setMobileOpen] = useState(false)
+interface HeaderProps {
+    onMenuClick?: () => void
+}
+
+const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
     const theme = useTheme()
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen)
-    }
-
-    const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
-
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const [isMobileState, setIsMobileState] = useState(true)
+
     useEffect(() => {
         setIsMobileState(isMobile)
     }, [isMobile])
+
+    const handleDrawerToggle = () => {
+        if (onMenuClick) {
+            onMenuClick()
+        }
+    }
 
     return (
         <AppBar
@@ -38,20 +42,18 @@ const Header = () => {
         >
             <Container maxWidth="lg">
                 <Toolbar disableGutters>
-                    {isMobileState ? (
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            aria-label="menu"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleDrawerToggle}
-                            color="inherit"
-                            sx={{ mr: 2 }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                    ) : null}
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        aria-label="menu"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleDrawerToggle}
+                        color="inherit"
+                        sx={{ mr: 2, display: { xs: 'flex', md: 'none' } }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
                     <Typography
                         variant="h6"
                         color="#FFFFFF"
@@ -60,9 +62,7 @@ const Header = () => {
                     >
                         あきらパパツールサイト
                     </Typography>
-                    {isMobileState ? (
-                        <Sidebar open={mobileOpen} onClose={handleDrawerToggle} />
-                    ) : (
+                    {!isMobileState && (
                         <nav>
                             <Link
                                 href="/"

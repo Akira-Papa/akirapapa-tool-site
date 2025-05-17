@@ -1,12 +1,7 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
-import {
-    Drawer,
-    List,
-    ListItem,
-    ListItemText,
-} from '@mui/material'
+import { Drawer, List, ListItem, ListItemText, Box } from '@mui/material'
 
 interface SidebarProps {
     open: boolean
@@ -26,7 +21,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                 <Link
                     href="/"
                     passHref
-                    style={{ color: 'inherit', textDecoration: 'none', width: '100%' }}
+                    style={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        width: '100%',
+                    }}
                 >
                     <ListItemText primary="ホーム" sx={{ color: '#333333' }} />
                 </Link>
@@ -37,7 +36,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                 <Link
                     href="/unixtime"
                     passHref
-                    style={{ color: 'inherit', textDecoration: 'none', width: '100%' }}
+                    style={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        width: '100%',
+                    }}
                 >
                     <ListItemText
                         primary="UNIXタイムスタンプ変換"
@@ -51,7 +54,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                 <Link
                     href="/wordcount"
                     passHref
-                    style={{ color: 'inherit', textDecoration: 'none', width: '100%' }}
+                    style={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        width: '100%',
+                    }}
                 >
                     <ListItemText
                         primary="文字数カウント"
@@ -65,7 +72,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                 <Link
                     href="/password"
                     passHref
-                    style={{ color: 'inherit', textDecoration: 'none', width: '100%' }}
+                    style={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        width: '100%',
+                    }}
                 >
                     <ListItemText
                         primary="パスワードジェネレーター"
@@ -79,7 +90,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                 <Link
                     href="/qrcode"
                     passHref
-                    style={{ color: 'inherit', textDecoration: 'none', width: '100%' }}
+                    style={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        width: '100%',
+                    }}
                 >
                     <ListItemText
                         primary="QRコード生成"
@@ -93,7 +108,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                 <Link
                     href="/colorpicker"
                     passHref
-                    style={{ color: 'inherit', textDecoration: 'none', width: '100%' }}
+                    style={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        width: '100%',
+                    }}
                 >
                     <ListItemText
                         primary="カラーピッカー"
@@ -107,7 +126,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                 <Link
                     href="/markdown"
                     passHref
-                    style={{ color: 'inherit', textDecoration: 'none', width: '100%' }}
+                    style={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        width: '100%',
+                    }}
                 >
                     <ListItemText
                         primary="マークダウンエディター"
@@ -119,26 +142,42 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     )
 
     return (
-        <Drawer
-            variant="temporary"
-            open={open}
-            onClose={onClose}
-            ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-            }}
-            sx={{
-                display: { xs: 'block', lg: 'none' },
-                '& .MuiDrawer-paper': {
-                    boxSizing: 'border-box',
+        <>
+            {/* モバイル表示用のドロワー（md未満で表示） */}
+            <Drawer
+                variant="temporary"
+                open={open}
+                onClose={onClose}
+                ModalProps={{
+                    keepMounted: true, // Better open performance on mobile.
+                }}
+                sx={{
+                    display: { xs: 'block', md: 'none' },
+                    '& .MuiDrawer-paper': {
+                        boxSizing: 'border-box',
+                        width: 240,
+                        bgcolor: 'background.paper',
+                        borderRight: '1px solid',
+                        borderColor: 'divider',
+                    },
+                }}
+            >
+                {drawerContent}
+            </Drawer>
+
+            {/* デスクトップ表示用の固定サイドバー（md以上で表示） */}
+            <Box
+                sx={{
                     width: 240,
-                    bgcolor: 'background.paper',
+                    flexShrink: 0,
+                    display: { xs: 'none', md: 'block' },
                     borderRight: '1px solid',
                     borderColor: 'divider',
-                },
-            }}
-        >
-            {drawerContent}
-        </Drawer>
+                }}
+            >
+                {drawerContent}
+            </Box>
+        </>
     )
 }
 
