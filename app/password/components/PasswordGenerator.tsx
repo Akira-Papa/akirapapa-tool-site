@@ -17,6 +17,7 @@ const PasswordGenerator = () => {
     const [includeNumbers, setIncludeNumbers] = useState(true)
     const [includeSymbols, setIncludeSymbols] = useState(false)
     const [generatedPassword, setGeneratedPassword] = useState('')
+    const [warningMessage, setWarningMessage] = useState('')
 
     const generatePassword = () => {
         const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -29,11 +30,18 @@ const PasswordGenerator = () => {
         if (includeNumbers) characters += numberChars
         if (includeSymbols) characters += symbolChars
 
+        if (characters.length === 0) {
+            setWarningMessage('少なくとも1つの文字種を選択してください')
+            setGeneratedPassword('')
+            return
+        }
+
         let password = ''
         for (let i = 0; i < passwordLength; i++) {
             const randomIndex = Math.floor(Math.random() * characters.length)
             password += characters[randomIndex]
         }
+        setWarningMessage('')
         setGeneratedPassword(password)
     }
 
@@ -105,6 +113,11 @@ const PasswordGenerator = () => {
             >
                 パスワードを生成
             </Button>
+            {warningMessage && (
+                <Typography color="error" role="alert" sx={{ mt: 2 }}>
+                    {warningMessage}
+                </Typography>
+            )}
             {generatedPassword && (
                 <Typography
                     variant="body1"
