@@ -121,6 +121,21 @@ const Header = () => {
                     />
                 </Link>
             </ListItem>
+            <ListItem
+                onClick={handleDrawerToggle}
+                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
+            >
+                <Link
+                    href="/markdown"
+                    passHref
+                    style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                    <ListItemText
+                        primary="マークダウンエディター"
+                        sx={{ color: 'inherit', textDecoration: 'none' }}
+                    />
+                </Link>
+            </ListItem>
         </List>
     )
 
@@ -280,6 +295,23 @@ const Header = () => {
                                     }}
                                 >
                                     カラーピッカー
+                                </Typography>
+                            </Link>
+                            <Link
+                                href="/markdown"
+                                style={{
+                                    textDecoration: 'none',
+                                }}
+                                passHref
+                            >
+                                <Typography
+                                    variant="button"
+                                    color="#FFFFFF"
+                                    sx={{
+                                        margin: '0 10px',
+                                    }}
+                                >
+                                    マークダウンエディター
                                 </Typography>
                             </Link>
                         </nav>
