@@ -4,7 +4,7 @@ import PasswordGenerator from './components/PasswordGenerator'
 
 /**
  * パスワードジェネレーターページ
- * @returns パスワードジェネレーターページ
+ * @returns パスワードジェネレーターページ1
  */
 const PasswordPage = () => {
     return (
