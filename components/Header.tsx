@@ -7,14 +7,11 @@ import {
     Typography,
     Container,
     IconButton,
-    Drawer,
-    List,
-    ListItem,
-    ListItemText,
     useMediaQuery,
     useTheme,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import Sidebar from './Sidebar'
 
 const Header = () => {
     const [mobileOpen, setMobileOpen] = useState(false)
@@ -29,115 +26,6 @@ const Header = () => {
     useEffect(() => {
         setIsMobileState(isMobile)
     }, [isMobile])
-
-    const drawer = (
-        <List
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-        >
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText primary="ホーム" sx={{ color: '#333333' }} />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/unixtime"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="UNIXタイムスタンプ変換"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/wordcount"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="文字数カウント"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/password"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="パスワードジェネレーター"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/qrcode"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="QRコード生成"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/colorpicker"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="カラーピッカー"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/markdown"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="マークダウンエディター"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-        </List>
-    )
 
     return (
         <AppBar
@@ -173,26 +61,7 @@ const Header = () => {
                         あきらパパツールサイト
                     </Typography>
                     {isMobileState ? (
-                        <Drawer
-                            variant="temporary"
-                            open={mobileOpen}
-                            onClose={handleDrawerToggle}
-                            ModalProps={{
-                                keepMounted: true, // Better open performance on mobile.
-                            }}
-                            sx={{
-                                display: { xs: 'block', lg: 'none' },
-                                '& .MuiDrawer-paper': {
-                                    boxSizing: 'border-box',
-                                    width: 240,
-                                    bgcolor: 'background.paper',
-                                    borderRight: '1px solid',
-                                    borderColor: 'divider',
-                                },
-                            }}
-                        >
-                            {drawer}
-                        </Drawer>
+                        <Sidebar open={mobileOpen} onClose={handleDrawerToggle} />
                     ) : (
                         <nav>
                             <Link
