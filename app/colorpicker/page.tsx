@@ -14,9 +14,9 @@ const ColorPickerPage = () => {
         setHex(newColor.hex)
         setRgb(`rgb(${newColor.rgb.r}, ${newColor.rgb.g}, ${newColor.rgb.b})`)
         setHsl(
-            `hsl(${newColor.hsl.h.toFixed(2)}, ${newColor.hsl.s.toFixed(
+            `hsl(${newColor.hsl.h.toFixed(2)}, ${(newColor.hsl.s * 100).toFixed(
                 2
-            )}%, ${newColor.hsl.l.toFixed(2)}%)`
+            )}%, ${(newColor.hsl.l * 100).toFixed(2)}%)`
         )
     }
 
