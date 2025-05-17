@@ -6,7 +6,6 @@ const nextConfig = {
     },
     // Add any other Next.js configurations you might need here
     output: 'export',
-    distDir: 'out',
     trailingSlash: true,
 }
 
