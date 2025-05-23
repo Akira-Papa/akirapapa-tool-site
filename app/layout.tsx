@@ -22,6 +22,9 @@ const Layout = ({ children }) => {
                     minHeight: '100vh',
                     margin: 0,
                     padding: 0,
+                    background:
+                        'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+                    backgroundAttachment: 'fixed',
                 }}
             >
                 {isRendered && (
@@ -33,13 +36,14 @@ const Layout = ({ children }) => {
                                 component="main"
                                 sx={{
                                     flexGrow: 1,
-                                    p: 2,
+                                    p: 3,
                                     ml: { xs: 0, md: '240px' },
                                     width: {
                                         xs: '100%',
                                         md: 'calc(100% - 240px)',
                                     },
                                     transition: 'margin-left 0.3s ease',
+                                    minHeight: 'calc(100vh - 70px)',
                                 }}
                             >
                                 <Container maxWidth="lg">{children}</Container>
