@@ -84,7 +84,7 @@ const HomePage = () => {
     ]
 
     return (
-        <Box sx={{ py: 4 }}>
+        <Box>
             {/* ヒーローセクション */}
             <FeatureCard sx={{ mb: 6, textAlign: 'center' }}>
                 <Box sx={{ mb: 3 }}>
@@ -146,7 +146,7 @@ const HomePage = () => {
                 利用可能なツール
             </Typography>
 
-            <Grid container spacing={3}>
+            <Grid container spacing={3} sx={{ mb: 6 }}>
                 {tools.map((tool, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
                         <Link
@@ -211,7 +211,7 @@ const HomePage = () => {
             </Grid>
 
             {/* 今後の予定セクション */}
-            <FeatureCard sx={{ mt: 6 }}>
+            <FeatureCard>
                 <Typography
                     variant="h5"
                     component="h3"

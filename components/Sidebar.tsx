@@ -115,8 +115,9 @@ const Sidebar: React.FC = () => {
                 flexShrink: 0,
                 display: 'block',
                 position: { xs: 'fixed', md: 'static' },
-                height: '100%',
+                minHeight: '100%',
                 zIndex: 1200,
+                overflowY: 'auto',
             }}
         >
             {drawerContent}
