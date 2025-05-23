@@ -2,11 +2,16 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     images: {
-        domains: [], // Add domains for external images here if needed
+        unoptimized: true, // Static export requires unoptimized images
     },
-    // Add any other Next.js configurations you might need here
     output: 'export',
-    trailingSlash: true,
+    trailingSlash: false, // Disable trailing slash for better compatibility
+    basePath: '',
+    distDir: 'out',
+    // Ensure all pages are statically generated
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+    },
 }
 
 module.exports = nextConfig

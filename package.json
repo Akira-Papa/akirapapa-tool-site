@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "npm run build && aws s3 sync out s3://akirapapa-tool-site",
+    "deploy": "npm run build && aws s3 sync out s3://akirapapa-tool-site --delete && aws s3 website s3://akirapapa-tool-site --index-document index.html --error-document index.html",
     "test": "jest"
   },
   "dependencies": {

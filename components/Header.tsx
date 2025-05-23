@@ -1,324 +1,66 @@
 'use client'
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
-import {
-    AppBar,
-    Toolbar,
-    Typography,
-    Container,
-    IconButton,
-    Drawer,
-    List,
-    ListItem,
-    ListItemText,
-    useMediaQuery,
-    useTheme,
-} from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
+import React from 'react'
+import { AppBar, Toolbar, Typography, Container, Box } from '@mui/material'
+import { styled } from '@mui/material/styles'
 
-const Header = () => {
-    const [mobileOpen, setMobileOpen] = useState(false)
-    const theme = useTheme()
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen)
-    }
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    boxShadow:
+        '0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(103,126,234,0.4)',
+    backdropFilter: 'blur(10px)',
+    borderRadius: 0,
+}))
 
-    const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
+const StyledTypography = styled(Typography)(({ theme }) => ({
+    background: 'linear-gradient(45deg, #FFF 30%, #E8F5E8 90%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    fontWeight: 700,
+    letterSpacing: '0.5px',
+    textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+}))
 
-    const [isMobileState, setIsMobileState] = useState(true)
-    useEffect(() => {
-        setIsMobileState(isMobile)
-    }, [isMobile])
-
-    const drawer = (
-        <List
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-        >
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText primary="ホーム" sx={{ color: '#333333' }} />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/unixtime"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="UNIXタイムスタンプ変換"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/wordcount"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="文字数カウント"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/password"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="パスワードジェネレーター"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/qrcode"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="QRコード生成"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/colorpicker"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="カラーピッカー"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-            <ListItem
-                onClick={handleDrawerToggle}
-                sx={{ '&:hover': { bgcolor: 'primary.light', color: 'white' } }}
-            >
-                <Link
-                    href="/markdown"
-                    passHref
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                    <ListItemText
-                        primary="マークダウンエディター"
-                        sx={{ color: 'inherit', textDecoration: 'none' }}
-                    />
-                </Link>
-            </ListItem>
-        </List>
-    )
-
+const Header: React.FC = () => {
     return (
-        <AppBar
-            position="static"
-            color="primary"
-            elevation={0}
-            style={{
-                margin: 0,
-            }}
-        >
+        <StyledAppBar position="static" elevation={0}>
             <Container maxWidth="lg">
-                <Toolbar disableGutters>
-                    {isMobileState ? (
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            aria-label="menu"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleDrawerToggle}
-                            color="inherit"
-                            sx={{ mr: 2 }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                    ) : null}
-                    <Typography
-                        variant="h6"
-                        color="#FFFFFF"
-                        noWrap
-                        sx={{ flexGrow: 1 }}
+                <Toolbar disableGutters sx={{ minHeight: 70 }}>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexGrow: 1,
+                        }}
                     >
-                        あきらパパツールサイト
-                    </Typography>
-                    {isMobileState ? (
-                        <Drawer
-                            variant="temporary"
-                            open={mobileOpen}
-                            onClose={handleDrawerToggle}
-                            ModalProps={{
-                                keepMounted: true, // Better open performance on mobile.
-                            }}
+                        <Box
                             sx={{
-                                display: { xs: 'block', lg: 'none' },
-                                '& .MuiDrawer-paper': {
-                                    boxSizing: 'border-box',
-                                    width: 240,
-                                    bgcolor: 'background.paper',
-                                    borderRight: '1px solid',
-                                    borderColor: 'divider',
-                                },
+                                width: 40,
+                                height: 40,
+                                borderRadius: '50%',
+                                background:
+                                    'linear-gradient(45deg, #FFF 30%, #E8F5E8 90%)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginRight: 2,
+                                boxShadow: '0 2px 10px rgba(255,255,255,0.3)',
                             }}
                         >
-                            {drawer}
-                        </Drawer>
-                    ) : (
-                        <nav>
-                            <Link
-                                href="/"
-                                passHref
-                                style={{
-                                    textDecoration: 'none',
-                                }}
+                            <Typography
+                                variant="h6"
+                                sx={{ color: '#667eea', fontWeight: 'bold' }}
                             >
-                                <Typography
-                                    variant="button"
-                                    color="#FFFFFF"
-                                    sx={{
-                                        margin: '0 10px',
-                                    }}
-                                >
-                                    ホーム
-                                </Typography>
-                            </Link>
-                            <Link
-                                href="/unixtime"
-                                style={{
-                                    textDecoration: 'none',
-                                }}
-                                passHref
-                            >
-                                <Typography
-                                    variant="button"
-                                    color="#FFFFFF"
-                                    sx={{
-                                        margin: '0 10px',
-                                    }}
-                                >
-                                    UNIXタイムスタンプ変換
-                                </Typography>
-                            </Link>
-                            <Link
-                                href="/wordcount"
-                                style={{
-                                    textDecoration: 'none',
-                                }}
-                                passHref
-                            >
-                                <Typography
-                                    variant="button"
-                                    color="#FFFFFF"
-                                    sx={{
-                                        margin: '0 10px',
-                                    }}
-                                >
-                                    文字数カウント
-                                </Typography>
-                            </Link>
-                            <Link
-                                href="/password"
-                                style={{
-                                    textDecoration: 'none',
-                                }}
-                                passHref
-                            >
-                                <Typography
-                                    variant="button"
-                                    color="#FFFFFF"
-                                    sx={{
-                                        margin: '0 10px',
-                                    }}
-                                >
-                                    パスワードジェネレーター
-                                </Typography>
-                            </Link>
-                            <Link
-                                href="/qrcode"
-                                style={{
-                                    textDecoration: 'none',
-                                }}
-                                passHref
-                            >
-                                <Typography
-                                    variant="button"
-                                    color="#FFFFFF"
-                                    sx={{
-                                        margin: '0 10px',
-                                    }}
-                                >
-                                    QRコード生成
-                                </Typography>
-                            </Link>
-                            <Link
-                                href="/colorpicker"
-                                style={{
-                                    textDecoration: 'none',
-                                }}
-                                passHref
-                            >
-                                <Typography
-                                    variant="button"
-                                    color="#FFFFFF"
-                                    sx={{
-                                        margin: '0 10px',
-                                    }}
-                                >
-                                    カラーピッカー
-                                </Typography>
-                            </Link>
-                            <Link
-                                href="/markdown"
-                                style={{
-                                    textDecoration: 'none',
-                                }}
-                                passHref
-                            >
-                                <Typography
-                                    variant="button"
-                                    color="#FFFFFF"
-                                    sx={{
-                                        margin: '0 10px',
-                                    }}
-                                >
-                                    マークダウンエディター
-                                </Typography>
-                            </Link>
-                        </nav>
-                    )}
+                                🛠️
+                            </Typography>
+                        </Box>
+                        <StyledTypography variant="h5" noWrap>
+                            あきらパパツールサイト
+                        </StyledTypography>
+                    </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </StyledAppBar>
     )
 }
+
 export default Header
