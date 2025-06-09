@@ -113,14 +113,49 @@ const Sidebar: React.FC = () => {
             sx={{
                 width: 240,
                 flexShrink: 0,
-                display: 'block',
-                position: { xs: 'fixed', md: 'static' },
-                minHeight: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                position: { xs: 'fixed', md: 'absolute' },
+                top: 0,
+                left: 0,
+                bottom: 0,
+                height: '100%',
                 zIndex: 1200,
-                overflowY: 'auto',
             }}
         >
-            {drawerContent}
+            <Box sx={{ flex: 1, overflowY: 'auto' }}>
+                {drawerContent}
+            </Box>
+            <Box
+                sx={{
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    color: 'white',
+                    p: 2,
+                    textAlign: 'center',
+                    borderTop: '1px solid rgba(255,255,255,0.1)',
+                }}
+            >
+                <Typography
+                    variant="body2"
+                    sx={{
+                        fontSize: '0.75rem',
+                        opacity: 0.9,
+                        mb: 0.5,
+                    }}
+                >
+                    © 2024 あきらパパツールサイト
+                </Typography>
+                <Typography
+                    variant="caption"
+                    sx={{
+                        fontSize: '0.65rem',
+                        opacity: 0.7,
+                        display: 'block',
+                    }}
+                >
+                    Made with ❤️ using Next.js
+                </Typography>
+            </Box>
         </StyledSidebar>
     )
 }

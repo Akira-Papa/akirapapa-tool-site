@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
-import Footer from '../components/Footer'
 import { Container, Box } from '@mui/material'
 import '../styles/globals.css'
 
@@ -38,6 +37,7 @@ const Layout = ({ children }) => {
                             sx={{
                                 display: 'flex',
                                 flex: 1,
+                                position: 'relative',
                             }}
                         >
                             <Sidebar />
@@ -51,6 +51,9 @@ const Layout = ({ children }) => {
                                         md: 'calc(100% - 240px)',
                                     },
                                     transition: 'margin-left 0.3s ease',
+                                    background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+                                    minHeight: '100%',
+                                    paddingLeft: 0,
                                 }}
                             >
                                 <Container
@@ -63,7 +66,6 @@ const Layout = ({ children }) => {
                                 </Container>
                             </Box>
                         </Box>
-                        <Footer />
                     </Box>
                 )}
             </body>
