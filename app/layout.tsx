@@ -18,8 +18,7 @@ const Layout = ({ children }) => {
                 style={{
                     margin: 0,
                     padding: 0,
-                    background:
-                        'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+                    background: '#f8f9fa',
                     backgroundAttachment: 'fixed',
                     minHeight: '100vh',
                 }}
@@ -51,7 +50,7 @@ const Layout = ({ children }) => {
                                         md: 'calc(100% - 240px)',
                                     },
                                     transition: 'margin-left 0.3s ease',
-                                    background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+                                    background: '#f8f9fa',
                                     minHeight: '100%',
                                     paddingLeft: 0,
                                 }}

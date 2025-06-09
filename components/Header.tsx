@@ -2,59 +2,55 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography, Container, Box } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTools } from '@fortawesome/free-solid-svg-icons'
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    boxShadow:
-        '0 4px 20px 0 rgba(0,0,0,0.14), 0 7px 10px -5px rgba(103,126,234,0.4)',
-    backdropFilter: 'blur(10px)',
-    borderRadius: 0,
+    background: '#ffffff',
+    boxShadow: '0 1px 0 rgba(0,0,0,0.05)',
+    borderBottom: '1px solid #f0f0f0',
 }))
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
-    background: 'linear-gradient(45deg, #FFF 30%, #E8F5E8 90%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    fontWeight: 700,
-    letterSpacing: '0.5px',
-    textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+    color: '#1a1a1a',
+    fontWeight: 500,
+    fontSize: '1.125rem',
+    letterSpacing: '-0.02em',
 }))
 
 const Header: React.FC = () => {
     return (
         <StyledAppBar position="static" elevation={0}>
-            <Container maxWidth="lg">
-                <Toolbar disableGutters sx={{ minHeight: 70 }}>
+            <Container maxWidth={false}>
+                <Toolbar disableGutters sx={{ height: 64, px: 3 }}>
                     <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            flexGrow: 1,
+                            gap: 2,
                         }}
                     >
                         <Box
                             sx={{
-                                width: 40,
-                                height: 40,
-                                borderRadius: '50%',
-                                background:
-                                    'linear-gradient(45deg, #FFF 30%, #E8F5E8 90%)',
+                                width: 36,
+                                height: 36,
+                                borderRadius: '8px',
+                                background: '#000000',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                marginRight: 2,
-                                boxShadow: '0 2px 10px rgba(255,255,255,0.3)',
                             }}
                         >
-                            <Typography
-                                variant="h6"
-                                sx={{ color: '#667eea', fontWeight: 'bold' }}
-                            >
-                                🛠️
-                            </Typography>
+                            <FontAwesomeIcon 
+                                icon={faTools} 
+                                style={{ 
+                                    color: '#ffffff',
+                                    fontSize: '18px'
+                                }}
+                            />
                         </Box>
-                        <StyledTypography variant="h5" noWrap>
-                            あきらパパツールサイト
+                        <StyledTypography variant="h6" noWrap>
+                            開発者ツール
                         </StyledTypography>
                     </Box>
                 </Toolbar>
