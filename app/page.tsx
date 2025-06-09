@@ -15,7 +15,7 @@ import {
     faKey,
     faQrcode,
     faPalette,
-    faMarkdown,
+    faFileCode,
     faArrowRight
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -46,7 +46,7 @@ const StyledCard = styled(Paper)(({ theme }) => ({
         left: 0,
         right: 0,
         height: '4px',
-        background: '#000000',
+        background: '#1a237e',
         transform: 'translateX(-100%)',
         transition: 'transform 0.3s ease',
     },
@@ -101,7 +101,7 @@ const HomePage = () => {
         {
             name: 'マークダウンエディター',
             description: 'リアルタイムレンダリングでMarkdownを作成・プレビュー',
-            icon: faMarkdown,
+            icon: faFileCode,
             href: '/markdown',
         },
     ]
@@ -115,7 +115,7 @@ const HomePage = () => {
                     sx={{
                         fontSize: { xs: '2.5rem', md: '3.5rem' },
                         fontWeight: 700,
-                        color: '#000000',
+                        color: '#1a237e',
                         mb: 2,
                         letterSpacing: '-0.03em',
                     }}
@@ -151,14 +151,14 @@ const HomePage = () => {
                                         icon={tool.icon} 
                                         style={{ 
                                             fontSize: '24px',
-                                            color: '#000000'
+                                            color: '#1a237e'
                                         }}
                                     />
                                 </IconWrapper>
                                 <Typography
                                     variant="h6"
                                     sx={{
-                                        color: '#000000',
+                                        color: '#1a237e',
                                         fontWeight: 600,
                                         mb: 1,
                                         fontSize: '1.125rem',
@@ -181,7 +181,7 @@ const HomePage = () => {
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'center',
-                                        color: '#000000',
+                                        color: '#1a237e',
                                         fontSize: '0.875rem',
                                         fontWeight: 500,
                                     }}

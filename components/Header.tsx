@@ -2,8 +2,8 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography, Container, Box } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTools } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
+import HammerIcon from './HammerIcon'
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     background: '#ffffff',
@@ -12,7 +12,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
 }))
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
-    color: '#1a1a1a',
+    color: '#1a237e',
     fontWeight: 500,
     fontSize: '1.125rem',
     letterSpacing: '-0.02em',
@@ -23,36 +23,30 @@ const Header: React.FC = () => {
         <StyledAppBar position="static" elevation={0}>
             <Container maxWidth={false}>
                 <Toolbar disableGutters sx={{ height: 64, px: 3 }}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 2,
-                        }}
-                    >
+                    <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 16 }}>
                         <Box
                             sx={{
                                 width: 36,
                                 height: 36,
                                 borderRadius: '8px',
-                                background: '#000000',
+                                background: '#1a237e',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
+                                '&:hover': {
+                                    transform: 'scale(1.05)',
+                                    boxShadow: '0 4px 12px rgba(26, 35, 126, 0.3)',
+                                },
                             }}
                         >
-                            <FontAwesomeIcon 
-                                icon={faTools} 
-                                style={{ 
-                                    color: '#ffffff',
-                                    fontSize: '18px'
-                                }}
-                            />
+                            <HammerIcon size={24} color="#ffffff" />
                         </Box>
                         <StyledTypography variant="h6" noWrap>
-                            開発者ツール
+                            あきらパパの開発者ツール
                         </StyledTypography>
-                    </Box>
+                    </Link>
                 </Toolbar>
             </Container>
         </StyledAppBar>

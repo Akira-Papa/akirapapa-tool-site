@@ -18,27 +18,20 @@ import {
     faKey,
     faQrcode,
     faPalette,
-    faMarkdown
+    faFileCode
 } from '@fortawesome/free-solid-svg-icons'
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
     margin: '0',
     padding: '0',
     borderRadius: '0',
-    '& a': {
-        width: '100%',
-        padding: '12px 24px',
-        display: 'flex',
-        alignItems: 'center',
-        textDecoration: 'none',
-        color: '#666666',
-        transition: 'all 0.15s ease',
-        '&:hover': {
-            background: '#f8f8f8',
-            color: '#000000',
-            '& svg': {
-                color: '#000000',
-            },
+    '&:hover': {
+        background: '#f8f8f8',
+        '& a': {
+            color: '#1a237e',
+        },
+        '& svg': {
+            color: '#1a237e !important',
         },
     },
 }))
@@ -56,7 +49,7 @@ const Sidebar: React.FC = () => {
         { href: '/password', label: 'パスワード生成', icon: faKey },
         { href: '/qrcode', label: 'QRコード生成', icon: faQrcode },
         { href: '/colorpicker', label: 'カラーピッカー', icon: faPalette },
-        { href: '/markdown', label: 'マークダウンエディター', icon: faMarkdown },
+        { href: '/markdown', label: 'マークダウンエディタ', icon: faFileCode },
     ]
 
     const drawerContent = (
@@ -65,8 +58,20 @@ const Sidebar: React.FC = () => {
             <List sx={{ padding: 0 }}>
                 {menuItems.map((item, index) => (
                     <StyledListItem key={index} disablePadding>
-                        <Link href={item.href} passHref>
-                            <ListItemIcon sx={{ minWidth: 40, pl: 0 }}>
+                        <Link 
+                            href={item.href} 
+                            passHref
+                            style={{
+                                width: '100%',
+                                padding: '12px 24px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                textDecoration: 'none',
+                                color: '#666666',
+                                transition: 'all 0.15s ease',
+                            }}
+                        >
+                            <ListItemIcon sx={{ minWidth: 40 }}>
                                 <FontAwesomeIcon 
                                     icon={item.icon} 
                                     style={{ 
@@ -123,7 +128,7 @@ const Sidebar: React.FC = () => {
                         textAlign: 'center',
                     }}
                 >
-                    © 2024 開発者ツール
+                    © 2024 あきらパパツールサイト
                 </Typography>
             </Box>
         </StyledSidebar>

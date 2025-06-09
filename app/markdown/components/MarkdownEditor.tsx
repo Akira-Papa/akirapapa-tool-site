@@ -5,7 +5,6 @@ import {
     TextField,
     Typography,
     Paper,
-    Button,
     Snackbar,
     Box,
     IconButton,
@@ -15,6 +14,7 @@ import { styled } from '@mui/material/styles'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import 'github-markdown-css/github-markdown.css'
+import '../../../styles/markdown-overrides.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
     faCopy,
@@ -24,7 +24,7 @@ import {
     faClipboard
 } from '@fortawesome/free-solid-svg-icons'
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
+const StyledPaper = styled(Paper)(() => ({
     background: '#ffffff',
     border: '1px solid #f0f0f0',
     borderRadius: '12px',
@@ -33,7 +33,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     overflow: 'hidden',
 }))
 
-const StyledTextField = styled(TextField)(({ theme }) => ({
+const StyledTextField = styled(TextField)(() => ({
     '& .MuiOutlinedInput-root': {
         borderRadius: '0',
         background: '#ffffff',
@@ -51,7 +51,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     },
 }))
 
-const HeaderSection = styled(Box)(({ theme }) => ({
+const HeaderSection = styled(Box)(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -60,7 +60,7 @@ const HeaderSection = styled(Box)(({ theme }) => ({
     background: '#fafafa',
 }))
 
-const StatusBar = styled(Box)(({ theme }) => ({
+const StatusBar = styled(Box)(() => ({
     display: 'flex',
     alignItems: 'center',
     gap: '24px',
@@ -71,7 +71,7 @@ const StatusBar = styled(Box)(({ theme }) => ({
     color: '#666666',
 }))
 
-const PreviewContainer = styled(Box)(({ theme }) => ({
+const PreviewContainer = styled(Box)(() => ({
     padding: '24px',
     minHeight: '500px',
     maxHeight: '600px',
@@ -80,9 +80,32 @@ const PreviewContainer = styled(Box)(({ theme }) => ({
         background: 'transparent',
         color: '#1a1a1a',
     },
+    '& .markdown-body table': {
+        borderCollapse: 'collapse',
+        width: '100%',
+        marginBottom: '16px',
+    },
+    '& .markdown-body table th': {
+        backgroundColor: '#1a237e !important',
+        color: '#ffffff !important',
+        fontWeight: '600',
+        padding: '12px 16px',
+        border: '1px solid #d0d0d0',
+        textAlign: 'left',
+    },
+    '& .markdown-body table td': {
+        padding: '12px 16px',
+        border: '1px solid #e0e0e0',
+    },
+    '& .markdown-body table tr:nth-of-type(even)': {
+        backgroundColor: '#f8f8f8',
+    },
+    '& .markdown-body table tr:hover': {
+        backgroundColor: '#f0f0f0',
+    },
 }))
 
-const ActionButton = styled(IconButton)(({ theme }) => ({
+const ActionButton = styled(IconButton)(() => ({
     width: '36px',
     height: '36px',
     borderRadius: '8px',
@@ -91,7 +114,7 @@ const ActionButton = styled(IconButton)(({ theme }) => ({
     transition: 'all 0.15s ease',
     '&:hover': {
         background: '#f8f8f8',
-        color: '#000000',
+        color: '#1a237e',
         border: '1px solid #d0d0d0',
     },
 }))
@@ -167,7 +190,7 @@ function greet(name) {
                     variant="h3"
                     sx={{
                         fontWeight: 700,
-                        color: '#000000',
+                        color: '#1a237e',
                         mb: 1,
                         fontSize: { xs: '2rem', md: '2.5rem' },
                         letterSpacing: '-0.02em',
@@ -206,7 +229,7 @@ function greet(name) {
                                     variant="subtitle1"
                                     sx={{ 
                                         fontWeight: 600,
-                                        color: '#1a1a1a',
+                                        color: '#1a237e',
                                     }}
                                 >
                                     エディター
@@ -273,7 +296,7 @@ function greet(name) {
                                     variant="subtitle1"
                                     sx={{ 
                                         fontWeight: 600,
-                                        color: '#1a1a1a',
+                                        color: '#1a237e',
                                     }}
                                 >
                                     プレビュー
@@ -310,7 +333,7 @@ function greet(name) {
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 sx={{
                     '& .MuiSnackbarContent-root': {
-                        background: '#1a1a1a',
+                        background: '#1a237e',
                         borderRadius: '8px',
                         fontSize: '14px',
                     },
