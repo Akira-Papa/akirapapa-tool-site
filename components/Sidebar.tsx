@@ -18,7 +18,9 @@ import {
     faKey,
     faQrcode,
     faPalette,
-    faFileCode
+    faFileCode,
+    faFingerprint,
+    faCode
 } from '@fortawesome/free-solid-svg-icons'
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -47,6 +49,8 @@ const Sidebar: React.FC = () => {
         { href: '/unixtime', label: 'UNIXタイムスタンプ', icon: faClock },
         { href: '/wordcount', label: '文字数カウント', icon: faFileAlt },
         { href: '/password', label: 'パスワード生成', icon: faKey },
+        { href: '/uuid', label: 'UUID生成', icon: faFingerprint },
+        { href: '/json', label: 'JSON整形', icon: faCode },
         { href: '/qrcode', label: 'QRコード生成', icon: faQrcode },
         { href: '/colorpicker', label: 'カラーピッカー', icon: faPalette },
         { href: '/markdown', label: 'マークダウンエディタ', icon: faFileCode },

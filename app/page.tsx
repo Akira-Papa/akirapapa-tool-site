@@ -16,6 +16,8 @@ import {
     faQrcode,
     faPalette,
     faFileCode,
+    faFingerprint,
+    faCode,
     faArrowRight
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -87,6 +89,18 @@ const HomePage = () => {
             href: '/password',
         },
         {
+            name: 'UUID生成',
+            description: 'UUID v4形式の一意な識別子を生成',
+            icon: faFingerprint,
+            href: '/uuid',
+        },
+        {
+            name: 'JSON整形',
+            description: 'JSONの整形、圧縮、検証をリアルタイムで実行',
+            icon: faCode,
+            href: '/json',
+        },
+        {
             name: 'QRコード生成',
             description: 'テキストやURLから瞬時にQRコードを作成',
             icon: faQrcode,
@@ -99,7 +113,7 @@ const HomePage = () => {
             href: '/colorpicker',
         },
         {
-            name: 'マークダウンエディター',
+            name: 'マークダウンエディタ',
             description: 'リアルタイムレンダリングでMarkdownを作成・プレビュー',
             icon: faFileCode,
             href: '/markdown',
