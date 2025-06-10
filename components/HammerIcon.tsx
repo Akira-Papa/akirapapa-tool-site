@@ -6,6 +6,7 @@ interface HammerIconProps {
 }
 
 const HammerIcon: React.FC<HammerIconProps> = ({ size = 24, color = 'white' }) => {
+    const scale = size / 32;
     return (
         <svg
             width={size}
@@ -14,15 +15,11 @@ const HammerIcon: React.FC<HammerIconProps> = ({ size = 24, color = 'white' }) =
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <g fill={color} transform="translate(16, 16)">
-                <g transform="rotate(-45)">
-                    {/* Handle */}
-                    <rect x="-2" y="0" width="4" height="12" rx="1"/>
-                    {/* Head */}
-                    <rect x="-5" y="-3" width="10" height="5" rx="1"/>
-                    {/* Claw part */}
-                    <path d="M 5 -3 L 5 -1 L 8 -1 L 8 1 L 5 1 L 5 2 L 9 2 L 9 -3 Z"/>
-                </g>
+            <g fill="none" stroke={color} strokeWidth={2}>
+                {/* Terminal/Command prompt */}
+                <rect x="6" y="8" width="20" height="16" rx="2"/>
+                <path d="M10 13 L13 16 L10 19" strokeLinecap="round" strokeLinejoin="round"/>
+                <line x1="15" y1="19" x2="20" y2="19" strokeLinecap="round"/>
             </g>
         </svg>
     )
